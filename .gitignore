@@ -1,4 +1,5 @@
 node_modules/
-logs.txt
 .env
+logs.txt
 *.log
+balance/

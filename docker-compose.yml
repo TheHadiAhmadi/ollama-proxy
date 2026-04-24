@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  ollama-proxy:
+    build: .
+    networks:
+      - traefik-global
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.ollama-proxy.rule=PathPrefix(`/`)"
+      - "traefik.http.services.ollama-proxy.loadbalancer.server.port=3000"
+
+networks:
+  traefik-global:
+    external: true
