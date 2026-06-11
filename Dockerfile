@@ -9,6 +9,6 @@ COPY . .
 
 USER node
 
-EXPOSE 3000
+EXPOSE 6754
 
 CMD ["node", "server.js"]
