@@ -2,6 +2,8 @@ services:
   ollama-proxy:
     build: .
     container_name: ollama-proxy
+    environment:
+      - DOCKER=true
     volumes:
       - "./data:/app/data"
     networks:
