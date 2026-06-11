@@ -1,14 +1,11 @@
-version: "3.8"
-
 services:
   ollama-proxy:
     build: .
+    container_name: ollama-proxy
+    volumes:
+      - "./data:/app/data"
     networks:
       - traefik-global
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.ollama-proxy.rule=PathPrefix(`/`)"
-      - "traefik.http.services.ollama-proxy.loadbalancer.server.port=6754"
 
 networks:
   traefik-global:
