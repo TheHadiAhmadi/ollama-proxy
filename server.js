@@ -7,9 +7,14 @@ const os = require('os');
 const app = express();
 const PORT = 6754;
 const OLLAMA_CLOUD_URL = 'https://ollama.com';
-const LOG_FILE = path.join('/app/data/logs.txt');
-const API_KEYS_FILE = path.join('./data/apikeys');
-const ADMIN_TOKEN_FILE = path.join('./data/admin-token');
+const DATA_DIR = process.env.DATA_DIR || '/app/data';
+const LOG_FILE = path.join(DATA_DIR, 'logs.txt');
+const API_KEYS_FILE = path.join(DATA_DIR, 'apikeys');
+const ADMIN_TOKEN_FILE = path.join(DATA_DIR, 'admin-token');
+
+if (!fs.existsSync(DATA_DIR)) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+}
 
 let apiKeys = [];
 let disabledKeys = new Map();
